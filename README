@@ -1,0 +1,47 @@
+SimplAjax is a simple JavaScript library to make AJAX calls.
+
+Installation
+------------
+Download SimplAjax, read the license and put `simplajax.js` in the root directory of your web server. Include it in your HTML as follows:
+
+    <script src='/simpajax.js'></script>
+
+Usage
+-----
+You need to create a `SimplAjax` object which you can call methods on. The currently accepted methods are `start()` and `stop()`. Note that a `SimplAjax` object's options are immutable. You can initialize it like this:
+
+    var simplajax = new SimplAjax(options);
+
+Where options is an object that has at least a `URL` attribute. Other possible attributes are:
+
+ - `method` - `GET`, `POST`, `PUT`, `DELETE` or `HEAD`
+ - `requestHeaders` - an object containing custom request headers
+ - `username` - a username for basic HTTP auth
+ - `password` - a password for basic HTTP auth
+ - `body` - the body for a `POST` or `PUT` request
+ - `success` - a callback function which is called on success
+ - `error` - a callback function which is called on failure
+
+The `success` and `error` functions must be of the following signature:
+
+    function(data, statuscode, responseheaders)
+
+Example
+-------
+This is an example of a `GET` request:
+
+    var getExample = new SimplAjax({
+      URL: '/index.html',
+      success: function(data, statuscode, responseHeaders) {
+        alert(data);
+        alert(statuscode);
+        alert(responseHeaders);
+      },
+      error: function(data, statuscode, responseHeaders) {
+        alert(statuscode);
+      }
+    });
+
+License
+-------
+Licensed under the BSD license. See LICENSE for more information.
