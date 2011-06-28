@@ -45,6 +45,10 @@ var SimplAjax = function(options) {
             success: null,
             error: null
         };
+    } else {
+        if (options.method === null || options.method === undefined) {
+            options.method = "GET";
+        }
     }
     
     var request = null;
